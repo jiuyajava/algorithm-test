@@ -30,15 +30,16 @@ public class Lookup {
 
     /**
      * 冒泡排序
+     * 基本思想: 冒泡排序，类似于水中冒泡，较大的数沉下去，较小的数慢慢冒起来，假设从小到大，即为较大的数慢慢往后排，较小的数慢慢往前排。
+     * 直观表达，每一趟遍历，将一个最大的数移到序列末尾。
      */
-    static void BubbleSort(int array[], int n) {
-        int i, j, k;
-        for (i = 0; i < n - 1; i++) {
-            for (j = 0; j < n - 1 - i; j++) {
-                if (array[j] > array[j + 1]) {
-                    k = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = k;
+    static void BubbleSort(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i -1; j++) {   // 这里说明为什么需要-1
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
@@ -68,11 +69,18 @@ public class Lookup {
 
 
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4, 6, 11, 8, 9, 10,7,-1,-2};
-        Arrays.sort(array);
-        int target = -2;
-        int i = binarySearch(array, target);
-        System.out.println(array[i]);
+        int[] array = {1, 2, 5, 4, 6, 11, 8, 9, 10,7,-1,-2};
+       // Arrays.sort(array);
+
+        //二分查找
+        //int target = -2;
+       // int i = binarySearch(array, target);
+
+        //冒泡排序
+        BubbleSort(array);
+        for (int i : array) {
+            System.out.print(i + "\t");
+        }
 
 
     }
